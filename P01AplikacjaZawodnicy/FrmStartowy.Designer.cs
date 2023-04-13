@@ -36,6 +36,8 @@
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnUsunIPokaz = new System.Windows.Forms.Button();
+            this.btnGenerujPDF = new System.Windows.Forms.Button();
+            this.wbPrzegladrka = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // lblSredniWzrost
@@ -95,9 +97,9 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(193, 143);
+            this.btnDodaj.Location = new System.Drawing.Point(196, 143);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(91, 23);
+            this.btnDodaj.Size = new System.Drawing.Size(88, 23);
             this.btnDodaj.TabIndex = 10;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
@@ -113,11 +115,31 @@
             this.btnUsunIPokaz.UseVisualStyleBackColor = true;
             this.btnUsunIPokaz.Click += new System.EventHandler(this.btnUsunIPokaz_Click);
             // 
+            // btnGenerujPDF
+            // 
+            this.btnGenerujPDF.Location = new System.Drawing.Point(196, 173);
+            this.btnGenerujPDF.Name = "btnGenerujPDF";
+            this.btnGenerujPDF.Size = new System.Drawing.Size(88, 23);
+            this.btnGenerujPDF.TabIndex = 12;
+            this.btnGenerujPDF.Text = "Generuj PDF";
+            this.btnGenerujPDF.UseVisualStyleBackColor = true;
+            this.btnGenerujPDF.Click += new System.EventHandler(this.btnGenerujPDF_Click);
+            // 
+            // wbPrzegladrka
+            // 
+            this.wbPrzegladrka.Location = new System.Drawing.Point(303, 55);
+            this.wbPrzegladrka.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbPrzegladrka.Name = "wbPrzegladrka";
+            this.wbPrzegladrka.Size = new System.Drawing.Size(250, 243);
+            this.wbPrzegladrka.TabIndex = 13;
+            // 
             // FrmStartowy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 310);
+            this.ClientSize = new System.Drawing.Size(609, 310);
+            this.Controls.Add(this.wbPrzegladrka);
+            this.Controls.Add(this.btnGenerujPDF);
             this.Controls.Add(this.btnUsunIPokaz);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnUsun);
@@ -143,6 +165,8 @@
         private System.Windows.Forms.Button btnUsun;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnUsunIPokaz;
+        private System.Windows.Forms.Button btnGenerujPDF;
+        private System.Windows.Forms.WebBrowser wbPrzegladrka;
     }
 }
 

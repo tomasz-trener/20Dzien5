@@ -1,6 +1,8 @@
-﻿using P02Biblioteka.Domain;
+﻿using P01AplikacjaZawodnicy.Services;
+using P02Biblioteka.Domain;
 using P02Biblioteka.Services;
 using System;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace P01AplikacjaZawodnicy
@@ -77,6 +79,25 @@ namespace P01AplikacjaZawodnicy
            
         }
 
-    
+        private void btnGenerujPDF_Click(object sender, EventArgs e)
+        {
+            var zawodnicy = (Zawodnik[])lbDane.DataSource;
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Pliki pdf (*.pdf)|*.pdf";
+            sfd.Title = "Wskaż miejsce zapisu raportu PDF";
+            sfd.InitialDirectory = "c:\\dane";
+
+            sfd.FileName = cbKraje.Text + "_" + DateTime.Now.ToString("ssmmhhddMMyy");
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                PDFManager pm = new PDFManager(sfd.FileName);
+                pm.WygenerujPDF(zawodnicy);
+                wbPrzegladrka.Navigate(sfd.FileName);
+            } 
+
+            
+        }
     }
 }

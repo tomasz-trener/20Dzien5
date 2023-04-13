@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PDFManager.cs" />
     <EmbeddedResource Include="FrmStartowy.resx">
       <DependentUpon>FrmStartowy.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +101,9 @@
       <Project>{fa76fa6b-1b27-4759-a7e0-1db08693d9fc}</Project>
       <Name>P02Biblioteka</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="zawodnicy.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

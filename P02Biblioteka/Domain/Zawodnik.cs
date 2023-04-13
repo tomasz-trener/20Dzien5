@@ -25,5 +25,9 @@ namespace P02Biblioteka.Domain
                 return $"{Imie} {Nazwisko} ({Kraj})";
             }
         }
+
+        public string DataSformatowana => DataUrodzenia.ToString("yyyy-MM-dd");
+
+        public string DaneRaportowe => $"{ImieNazwiskoKraj} {DataSformatowana}";
     }
 }

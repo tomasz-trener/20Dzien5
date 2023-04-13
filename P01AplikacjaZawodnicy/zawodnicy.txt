@@ -1,0 +1,20 @@
+Dodaj now¹ opcje , po naciœniêciu przycisku,
+
+wygeneruj pdf z wylistowaniem zawodników wyœwietlonych przez listbox
+1) podaj imie, nazwisko, kraj, i datê urodzenia 
+2) przed zapisaniem pliku - wywo³aj SaveFileDialog zeby wkazac œcie¿ke do zapisu 
+	(nazwa pliku generowana automatycznie wg szablonu "{kraj}_{dataCzasAktualna}")
+3) po stworzeniu pliku wyœwietl jego podgl¹d w webbrowser 
+
+Pamiêtaj ¿eby nie umieszczaæ kodu przetwarzaj¹æego dane wewntrz klasy Form
+, która odpowiada za intrefejs. 
+
+Ca³a logikê genreowania PDF umieœæ w osobnej klasie: PDFManager
+
+w klasie PDFManager powinna znajdowaæ siê metoda: 
+  
+ void WygenerujPDF(Zawodnik[] zawodnicy)
+ {
+ ....
+	
+ }
