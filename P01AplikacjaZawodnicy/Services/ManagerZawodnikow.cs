@@ -125,5 +125,18 @@ namespace P01AplikacjaZawodnicy.Services
             zawodnicyCache.Remove(doUsunieca);
             Zapisz();
         }
+
+        internal void Dodaj(Zawodnik wyswietlany)
+        {
+            int maksId = 0;
+            foreach (var z in zawodnicyCache)
+                if (z.Id_zawodnika > maksId)
+                    maksId = z.Id_zawodnika;
+            
+            wyswietlany.Id_zawodnika = maksId + 1;
+
+            zawodnicyCache.Add(wyswietlany);
+            Zapisz();
+        }
     }
 }

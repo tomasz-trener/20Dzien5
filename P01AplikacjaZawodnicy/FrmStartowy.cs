@@ -48,10 +48,26 @@ namespace P01AplikacjaZawodnicy
         {
             Zawodnik zaznaczony = (Zawodnik)lbDane.SelectedItem;
 
-            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz,this);
+            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz,this, TrybOkienka.Edycja);
             frmSzczegoly.Show();
            
         }
+
+        private void btnUsunIPokaz_Click(object sender, EventArgs e)
+        {
+            Zawodnik zaznaczony = (Zawodnik)lbDane.SelectedItem;
+            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz, this, TrybOkienka.Usuwanie);
+            frmSzczegoly.Show();
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            //  FrmSzczegoly frmSzczegoly = new FrmSzczegoly(null,mz,this);
+            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(mz, this, TrybOkienka.Dodawanie);
+            frmSzczegoly.Show();
+        }
+
+     
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
@@ -67,5 +83,7 @@ namespace P01AplikacjaZawodnicy
             }
            
         }
+
+    
     }
 }

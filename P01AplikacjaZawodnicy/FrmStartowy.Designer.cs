@@ -34,6 +34,8 @@
             this.cbKraje = new System.Windows.Forms.ComboBox();
             this.btnSzczegoly = new System.Windows.Forms.Button();
             this.btnUsun = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnUsunIPokaz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSredniWzrost
@@ -75,7 +77,7 @@
             // 
             this.btnSzczegoly.Location = new System.Drawing.Point(196, 55);
             this.btnSzczegoly.Name = "btnSzczegoly";
-            this.btnSzczegoly.Size = new System.Drawing.Size(75, 23);
+            this.btnSzczegoly.Size = new System.Drawing.Size(91, 23);
             this.btnSzczegoly.TabIndex = 8;
             this.btnSzczegoly.Text = "Szczegóły";
             this.btnSzczegoly.UseVisualStyleBackColor = true;
@@ -85,17 +87,39 @@
             // 
             this.btnUsun.Location = new System.Drawing.Point(196, 85);
             this.btnUsun.Name = "btnUsun";
-            this.btnUsun.Size = new System.Drawing.Size(75, 23);
+            this.btnUsun.Size = new System.Drawing.Size(91, 23);
             this.btnUsun.TabIndex = 9;
             this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
             this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.Location = new System.Drawing.Point(193, 143);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(91, 23);
+            this.btnDodaj.TabIndex = 10;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
+            // btnUsunIPokaz
+            // 
+            this.btnUsunIPokaz.Location = new System.Drawing.Point(196, 114);
+            this.btnUsunIPokaz.Name = "btnUsunIPokaz";
+            this.btnUsunIPokaz.Size = new System.Drawing.Size(91, 23);
+            this.btnUsunIPokaz.TabIndex = 11;
+            this.btnUsunIPokaz.Text = "Usuń i pokaż";
+            this.btnUsunIPokaz.UseVisualStyleBackColor = true;
+            this.btnUsunIPokaz.Click += new System.EventHandler(this.btnUsunIPokaz_Click);
             // 
             // FrmStartowy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 310);
+            this.Controls.Add(this.btnUsunIPokaz);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnUsun);
             this.Controls.Add(this.btnSzczegoly);
             this.Controls.Add(this.lblSredniWzrost);
@@ -117,6 +141,8 @@
         private System.Windows.Forms.ComboBox cbKraje;
         private System.Windows.Forms.Button btnSzczegoly;
         private System.Windows.Forms.Button btnUsun;
+        private System.Windows.Forms.Button btnDodaj;
+        private System.Windows.Forms.Button btnUsunIPokaz;
     }
 }
 
