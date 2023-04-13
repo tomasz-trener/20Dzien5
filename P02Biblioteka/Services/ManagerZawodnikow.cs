@@ -1,5 +1,4 @@
-﻿
-using P01AplikacjaZawodnicy.Domain;
+﻿using P02Biblioteka.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -9,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace P01AplikacjaZawodnicy.Services
+namespace P02Biblioteka.Services
 {
     public class ManagerZawodnikow
     {
@@ -38,7 +37,7 @@ namespace P01AplikacjaZawodnicy.Services
                     z.Id_zawodnika, z.Id_trenera, z.Imie, z.Nazwisko, z.Kraj, z.DataUrodzenia.ToString("yyyy-MM-dd"), z.Wzrost, z.Waga);
                 sb.AppendLine(wiersz);
             }
-            File.WriteAllText(url, sb.ToString(),Encoding.UTF8);
+            File.WriteAllText(url, sb.ToString(), Encoding.UTF8);
         }
 
         public Zawodnik[] WczytajZawodnikow()
@@ -112,12 +111,12 @@ namespace P01AplikacjaZawodnicy.Services
             return suma / zawodnicy.Length;
         }
 
-        internal void Usun(int id_zawodnika)
+        public void Usun(int id_zawodnika)
         {
-            Zawodnik doUsunieca=null;
+            Zawodnik doUsunieca = null;
             foreach (var z in zawodnicyCache)
                 if (z.Id_zawodnika == id_zawodnika)
-                { 
+                {
                     doUsunieca = z;
                     break;
                 }
@@ -126,17 +125,22 @@ namespace P01AplikacjaZawodnicy.Services
             Zapisz();
         }
 
-        internal void Dodaj(Zawodnik wyswietlany)
+        public void Dodaj(Zawodnik wyswietlany)
         {
             int maksId = 0;
             foreach (var z in zawodnicyCache)
                 if (z.Id_zawodnika > maksId)
                     maksId = z.Id_zawodnika;
-            
+
             wyswietlany.Id_zawodnika = maksId + 1;
 
             zawodnicyCache.Add(wyswietlany);
             Zapisz();
+        }
+
+        public void Test()
+        {
+
         }
     }
 }

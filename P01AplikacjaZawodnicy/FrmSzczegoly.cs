@@ -1,13 +1,6 @@
-﻿using P01AplikacjaZawodnicy.Domain;
-using P01AplikacjaZawodnicy.Services;
+﻿using P02Biblioteka.Domain;
+using P02Biblioteka.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace P01AplikacjaZawodnicy
