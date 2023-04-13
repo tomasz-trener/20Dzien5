@@ -1,4 +1,5 @@
-﻿using P01AplikacjaZawodnicy.Services;
+﻿using P01AplikacjaZawodnicy.Domain;
+using P01AplikacjaZawodnicy.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,13 @@ namespace P01AplikacjaZawodnicy
     public partial class FrmStartowy : Form
     {
         ManagerZawodnikow mz = new ManagerZawodnikow();
+
         public FrmStartowy()
         {
             InitializeComponent();
 
             mz.WczytajZawodnikow();
             cbKraje.DataSource = mz.PodajKraje();
-
-
         }
 
         private void cbKraje_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,7 +41,9 @@ namespace P01AplikacjaZawodnicy
 
         private void btnSzczegoly_Click(object sender, EventArgs e)
         {
-            FrmSzczegoly frmSzczegoly = new FrmSzczegoly();
+            Zawodnik zaznaczony = (Zawodnik)lbDane.SelectedItem;
+
+            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz);
             frmSzczegoly.Show();
         }
     }

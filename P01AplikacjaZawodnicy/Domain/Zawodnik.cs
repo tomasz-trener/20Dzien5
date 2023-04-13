@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace P01AplikacjaZawodnicy.Domain
 {
 
-    internal class Zawodnik
+    public class Zawodnik
     {
         public int Id_zawodnika { get; set; }
         public int? Id_trenera { get; set; }
