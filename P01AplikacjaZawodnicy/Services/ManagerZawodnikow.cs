@@ -13,12 +13,12 @@ namespace P01AplikacjaZawodnicy.Services
 {
     public class ManagerZawodnikow
     {
-        private Zawodnik[] zawodnicyCache;
+        private List<Zawodnik> zawodnicyCache;
         private const string url = "C:\\dane\\zawodnicy.txt";
 
         public void Edytuj(Zawodnik edytowany)
         {
-            for (int i = 0; i < zawodnicyCache.Length; i++)
+            for (int i = 0; i < zawodnicyCache.Count; i++)
                 if (zawodnicyCache[i].Id_zawodnika == edytowany.Id_zawodnika)
                     zawodnicyCache[i] = edytowany;
 
@@ -38,7 +38,7 @@ namespace P01AplikacjaZawodnicy.Services
                     z.Id_zawodnika, z.Id_trenera, z.Imie, z.Nazwisko, z.Kraj, z.DataUrodzenia.ToString("yyyy-MM-dd"), z.Wzrost, z.Waga);
                 sb.AppendLine(wiersz);
             }
-            File.WriteAllText(url, sb.ToString());
+            File.WriteAllText(url, sb.ToString(),Encoding.UTF8);
         }
 
         public Zawodnik[] WczytajZawodnikow()
@@ -69,7 +69,7 @@ namespace P01AplikacjaZawodnicy.Services
                 zawodnicy[i - 1] = z;
             }
 
-            zawodnicyCache = zawodnicy;
+            zawodnicyCache = zawodnicy.ToList();
             return zawodnicy;
 
         }
@@ -110,6 +110,20 @@ namespace P01AplikacjaZawodnicy.Services
                 suma += z.Wzrost;
 
             return suma / zawodnicy.Length;
+        }
+
+        internal void Usun(int id_zawodnika)
+        {
+            Zawodnik doUsunieca=null;
+            foreach (var z in zawodnicyCache)
+                if (z.Id_zawodnika == id_zawodnika)
+                { 
+                    doUsunieca = z;
+                    break;
+                }
+
+            zawodnicyCache.Remove(doUsunieca);
+            Zapisz();
         }
     }
 }

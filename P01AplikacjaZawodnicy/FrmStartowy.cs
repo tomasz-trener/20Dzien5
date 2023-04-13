@@ -26,6 +26,11 @@ namespace P01AplikacjaZawodnicy
 
         private void cbKraje_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Odswiez();
+        }
+
+        public void Odswiez()
+        {
             string zaznaczonyKraj = (string)cbKraje.SelectedItem;
 
             if (zaznaczonyKraj != null)
@@ -43,8 +48,24 @@ namespace P01AplikacjaZawodnicy
         {
             Zawodnik zaznaczony = (Zawodnik)lbDane.SelectedItem;
 
-            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz);
+            FrmSzczegoly frmSzczegoly = new FrmSzczegoly(zaznaczony,mz,this);
             frmSzczegoly.Show();
+           
+        }
+
+        private void btnUsun_Click(object sender, EventArgs e)
+        {
+            Zawodnik zaznaczony = (Zawodnik)lbDane.SelectedItem;
+
+            DialogResult dr= MessageBox.Show($"Czy napewno chcesz usunąć zawodnika {zaznaczony.ImieNazwiskoKraj} ?", "Usuwanie",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(dr == DialogResult.Yes)
+            {
+                mz.Usun(zaznaczony.Id_zawodnika);
+                Odswiez();
+            }
+           
         }
     }
 }

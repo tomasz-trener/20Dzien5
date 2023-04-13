@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbKraje = new System.Windows.Forms.ComboBox();
             this.btnSzczegoly = new System.Windows.Forms.Button();
+            this.btnUsun = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSredniWzrost
@@ -80,17 +81,28 @@
             this.btnSzczegoly.UseVisualStyleBackColor = true;
             this.btnSzczegoly.Click += new System.EventHandler(this.btnSzczegoly_Click);
             // 
-            // Form1
+            // btnUsun
+            // 
+            this.btnUsun.Location = new System.Drawing.Point(196, 85);
+            this.btnUsun.Name = "btnUsun";
+            this.btnUsun.Size = new System.Drawing.Size(75, 23);
+            this.btnUsun.TabIndex = 9;
+            this.btnUsun.Text = "Usuń";
+            this.btnUsun.UseVisualStyleBackColor = true;
+            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
+            // 
+            // FrmStartowy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 310);
+            this.ClientSize = new System.Drawing.Size(320, 310);
+            this.Controls.Add(this.btnUsun);
             this.Controls.Add(this.btnSzczegoly);
             this.Controls.Add(this.lblSredniWzrost);
             this.Controls.Add(this.lbDane);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbKraje);
-            this.Name = "Form1";
+            this.Name = "FrmStartowy";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -104,6 +116,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbKraje;
         private System.Windows.Forms.Button btnSzczegoly;
+        private System.Windows.Forms.Button btnUsun;
     }
 }
 

@@ -16,13 +16,16 @@ namespace P01AplikacjaZawodnicy
     {
         private Zawodnik wyswietlany;
         private ManagerZawodnikow mz;
+        private FrmStartowy frmStartowy; 
 
-        public FrmSzczegoly(Zawodnik zawodnik, ManagerZawodnikow mz)
+        public FrmSzczegoly(Zawodnik zawodnik, ManagerZawodnikow mz, FrmStartowy frmStartowy)
         {
             InitializeComponent();
            
             wyswietlany = zawodnik;
             this.mz = mz;
+            this.frmStartowy = frmStartowy;
+
             txtImie.Text = wyswietlany.Imie;
             txtNazwisko.Text = wyswietlany.Nazwisko;
             txtKraj.Text = wyswietlany.Kraj;
@@ -41,6 +44,9 @@ namespace P01AplikacjaZawodnicy
             wyswietlany.Wzrost = Convert.ToInt32(numWzrost.Value);
 
             mz.Edytuj(wyswietlany);
+            
+            frmStartowy.Odswiez();
+            this.Close();
         }
     }
 }
