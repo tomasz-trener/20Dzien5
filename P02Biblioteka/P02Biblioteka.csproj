@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="P04PolaczenieZBaza">
-      <HintPath>..\..\20Dzien6\P04PolaczenieZBaza\bin\Debug\P04PolaczenieZBaza.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

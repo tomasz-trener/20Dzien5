@@ -1,5 +1,4 @@
 ﻿using P02Biblioteka.Domain;
-using P04PolaczenieZBaza;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -43,31 +42,31 @@ namespace P02Biblioteka.Services
 
         public Zawodnik[] WczytajZawodnikow()
         {
-            PolaczenieZBaza pzb = new PolaczenieZBaza();
-            object[][] dane = pzb.WyslijPolecenieSQL("select * from zawodnicy");
+            WebClient wc = new WebClient();
+            string dane = wc.DownloadString(url);
 
-            Zawodnik[] zawodnicy = new Zawodnik[dane.Length];
-            for ( int i = 0; i < dane.Length; i++)
+            string[] wiersze = dane.Split(new string[1] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            Zawodnik[] zawodnicy = new Zawodnik[wiersze.Length - 1];
+
+            for (int i = 1; i < wiersze.Length; i++)
             {
-                var w = dane[i];
+                string[] komorki = wiersze[i].Split(';');
                 Zawodnik z = new Zawodnik();
-                z.Id_zawodnika = (int)w[0];
-                if (w[1] != DBNull.Value) // null w c# różni się od null w bazie danych 
-                    z.Id_trenera = (int)w[1];
+                z.Id_zawodnika = Convert.ToInt32(komorki[0]);
 
-                z.Imie = (string)w[2];
-                z.Nazwisko = (string)w[3];
-                z.Kraj= (string)w[4];
 
-                if (w[5] !=  DBNull.Value)
-                    z.DataUrodzenia = (DateTime)w[5];
-                if (w[6] != DBNull.Value)
-                    z.Wzrost = (int)w[6];
-                if (w[7] != DBNull.Value)
-                    z.Waga = (int)w[7];
+                if (!string.IsNullOrEmpty(komorki[1]))
+                    z.Id_trenera = Convert.ToInt32(komorki[1]);
 
-                zawodnicy[i] = z;
-            } 
+                z.Imie = komorki[2];
+                z.Nazwisko = komorki[3];
+                z.Kraj = komorki[4];
+                z.DataUrodzenia = Convert.ToDateTime(komorki[5]);
+                z.Wzrost = Convert.ToInt32(komorki[6]);
+                z.Waga = Convert.ToInt32(komorki[7]);
+                zawodnicy[i - 1] = z;
+            }
 
             zawodnicyCache = zawodnicy.ToList();
             return zawodnicy;
@@ -126,18 +125,17 @@ namespace P02Biblioteka.Services
             Zapisz();
         }
 
-        public void Dodaj(Zawodnik w)
+        public void Dodaj(Zawodnik wyswietlany)
         {
-            PolaczenieZBaza pzb = new PolaczenieZBaza();
+            int maksId = 0;
+            foreach (var z in zawodnicyCache)
+                if (z.Id_zawodnika > maksId)
+                    maksId = z.Id_zawodnika;
 
-            string szablon = "insert into zawodnicy values ({0},'{1}','{2}','{3}','{4}',{5},{6})";
+            wyswietlany.Id_zawodnika = maksId + 1;
 
-            string sql= string.Format(szablon,
-                w.Id_trenera == null ? "null" : w.Id_trenera.ToString(),
-                w.Imie, w.Nazwisko, w.Kraj, w.DataUrodzenia.ToString("yyyyMMdd"), w.Wzrost, w.Waga);
-
-            pzb.WyslijPolecenieSQL(sql);
-            WczytajZawodnikow();
+            zawodnicyCache.Add(wyswietlany);
+            Zapisz();
         }
 
         public void Test()
